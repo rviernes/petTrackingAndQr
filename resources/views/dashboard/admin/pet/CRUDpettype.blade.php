@@ -17,8 +17,8 @@
           <input type="search" class="form-control rounded" name="petTypeSearch" id="petTypeSearch" placeholder="Search by Name" style="width: 200px;"/>
           <button type="submit" class="btn btn-outline-primary" id=""><i class="fas fa-search"></i></button>
           
-            <a id="add-sign" class="btn btn-success" title="Add Pet Type" style="margin-left: 10px" href="/admin/pet/CRUDaddtype">
-            <i class="fas fa-plus" ></i> Add Pet Type</a><br>
+            <a id="add-sign" class="btn btn-success" title="Add Pet Type" style="margin-left: 10px" href="/admin/CRUDpettype/Add">
+            <i class="fas fa-plus" ></i> Add Pet Type </a><br>
         </div>
       </form>
     </div>

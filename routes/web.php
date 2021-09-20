@@ -66,12 +66,10 @@ Route::prefix('admin')->name('admin.')->group(function() {
         Route::get('/CRUDcustomers', [AdminController::class, 'customerSearch2'])->name('custsearch');
         Route::get('/CRUDclinic', [AdminController::class, 'clinicSearch'])->name('clinicsearch');
         Route::get('/CRUDusers', [AdminController::class, 'userSearch'])->name('usersearch');
-
-        Route::get('pet/CRUDaddtype',function() { 
-            return view('pet/CRUDaddtype'); 
-        });
-        
-        Route::post('pet/CRUDaddtype', [AdminController::class, 'addType'])->name('addType');
+        Route::get('/CRUDpettype/Add', [AdminController::class, 'addType'])->name('addtype');
+        // Route::get('/pet/CRUDaddtype',function() { 
+        //     return view('/pet/CRUDaddtype'); 
+        // });
 
         // Route::get('/CRUDpettype/Create', [AdminController::class, 'addType'])->name('addtype');
         Route::post('/logout', [AdminController:: class, 'logout'])->name('logout');

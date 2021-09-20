@@ -9,7 +9,7 @@ use App\Models\Clinic;
 use App\Models\PetBreeds;
 use App\Models\Pets;
 use App\Models\PetTypes;
-use App\Models\userTypes;
+use App\Models\UserTypes;
 use App\Models\Veterinary;
 
 use Illuminate\Support\Facades\Auth;
@@ -50,6 +50,10 @@ class AdminController extends Controller
             alert()->error('Incorrect Username/Password','Fail');
             return redirect()->route('admin.login');
         }
+    }
+
+    final function addType(){
+        return view('dashboard/admin/pet/CRUDaddtype');
     }
 
     final function logout(){
@@ -137,9 +141,12 @@ class AdminController extends Controller
     public function userSearch(Request $request){
         $search = $request->get('userSearch');
         
-        $users = new User();
-        $usertypes = new userTypes();
-        $admins = new Admin();
+        // $users = new User();
+        // $usertypes = new userTypes();
+        // $admins = new Admin();
+
+        // $userTypes_name = UserTypes::where('username','LIKE', '%'.$search.'%')
+        //                 ->join('users')
         
 
         $userTypes_name = DB::table('user_types')
@@ -159,22 +166,22 @@ class AdminController extends Controller
         return view('dashboard/admin/users/CRUDusers', compact('userTypes_name'));
     }
 
-    function addType(Request $request){
+    // function addType(Request $request){
 
-        $type_name= $request->type_name;
+    //     $type_name= $request->type_name;
     
-        $checkQuery = DB::table('pet_types')->where('type_name','=', $type_name)->first();
+    //     $checkQuery = DB::table('pet_types')->where('type_name','=', $type_name)->first();
     
-        if ($checkQuery) {
-            alert()->warning('Pet Already Exist!', 'Creation Fail');
-            return back();
-        }else{
-            $request->validate([ 'type_name'=>'required' ]);
-            DB::table('pet_types')->insert([ 'type_name'=>$request->type_name ]);
+    //     if ($checkQuery) {
+    //         alert()->warning('Pet Already Exist!', 'Creation Fail');
+    //         return back();
+    //     }else{
+    //         $request->validate([ 'type_name'=>'required' ]);
+    //         DB::table('pet_types')->insert([ 'type_name'=>$request->type_name ]);
     
-            alert()->success('Pet type added succesfully', 'Type Added!');
-            return redirect('/admin/pet/CRUDaddtype');
-        }
-    }
+    //         alert()->success('Pet type added succesfully', 'Type Added!');
+    //         return redirect('/admin/pet/CRUDaddtype');
+    //     }
+    // }
 }
 // 'users.username', 'LIKE', '%'.$search.'%'
