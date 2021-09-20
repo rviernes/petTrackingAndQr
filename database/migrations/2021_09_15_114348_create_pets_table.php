@@ -17,7 +17,7 @@ class CreatePetsTable extends Migration
             $table->increments('pet_id');
             $table->string('pet_name');
             $table->string('pet_gender');
-            $table->string('pet_birthday');
+            $table->date('pet_birthday');
             $table->string('pet_notes')->nullable();
             $table->string('pet_bloodType')->nullable();
             $table->string('pet_DP')->nullable();

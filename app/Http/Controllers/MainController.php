@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\UserAccounts;
+use App\Models\User;
 use App\Models\Customers;
 use App\Models\Clinic;
 use App\Models\PetBreeds;
@@ -26,6 +26,11 @@ class MainController extends Controller
 {
     //CREATE USER FOR CUSTOMER
     function create(Request $request){
+
+        $username = $request->user_name;
+        $password = $request->user_password;
+        $email = $request->user_email;
+
         $fname = $request->customer_fname;
         $lname = $request->customer_lname;
         $mname = $request->customer_mname;
@@ -40,17 +45,18 @@ class MainController extends Controller
             return back();
         } else {
             $type = 3; //type 3 = customer
-            $userAccounts = new UserAccounts();
-            $userAccounts->user_name     = $request->user_name;
-            $userAccounts->user_password = Hash::make($request->user_password);
-            $userAccounts->user_mobile   = $request->user_mobile;
-            $userAccounts->user_email    = $request->user_email;
-            $userAccounts->userType_id   = $type;
-            $userAccounts->save();
+            $users = new User();
+            $users->username    = $username;
+            $users->password    = Hash::make($password);
+            $users->user_mobile = $request->user_mobile;
+            $users->email       = $email;
+            $users->userType_id = $type;
+            $users->save();
 
-            if ($userAccounts == true) { //If the insert account success
-                $getid = DB::table('user_accounts')->select('user_id')->where('user_email','=', $request->user_email)->first(); //assign id to variable
+            if ($users == true) { //If the insert account success
+                $getid = DB::table('users')->select('id')->where('email','=', $email)->first(); //assign id to variable
 
+                // dd($getid); die();
                 if (is_object($getid)) {
                     $toArray = (array)$getid; //convert id to array
                     $convert = implode($toArray); // convert array to string
@@ -68,7 +74,7 @@ class MainController extends Controller
                     $customers->customer_street      = ucwords($request->customer_street);
                     $customers->customer_subdivision = ucwords($request->customer_subdivision);
                     $customers->customer_city        = ucwords($request->customer_city);
-                    $customers->user_id              = $convert;
+                    $customers->id                   = $convert;
                     $customers->customer_isActive    = 1;
                     $customers->save();
 
@@ -84,46 +90,28 @@ class MainController extends Controller
     final function logIn(){
         return view('auth/login');
     }
+
+    final function logout(){
+        Auth::logout();
+        return redirect('/');
+    }
+    
     //check if the request is for User
     final function checkUser(Request $request){
         //VALIDATION OF INPUTS
         $request->validate([
-            'user_email'=>'required',
-            'user_password'=>'required'
+            'email'=>'required',
+            'password'=>'required'
         ]);
-
+        
         // $userAccounts = new UserAccounts();
 
-        // $creds = $userAccounts->only('user_email','user_password');
-        // if (Auth::attempt($creds)) {
-        //     return redirect()->route('user.home');
-        // }else{
-        //     return redirect()->route('user.login')->with('fail','Incorrect Username/Password');
-        // }
-
-        // $userInfo = UserAccounts::where('user_email','=', $request->user_email)->first();
-        $userInfo = DB::table('user_accounts')->select('*')->where('user_email','=', $request->user_email)->first();
-        
-        dd($userInfo->user_password == $request->user_password); die();
-        if (!$userInfo) {
-            return back()->with('fail','We do not recognize your email address');
+        $creds = $request->only('email','password');
+        if (Auth::attempt($creds)) {
+            return redirect()->route('user.home');
         }else{
-                if ($userInfo->user_password == $request->user_password) {
-                    if ($userInfo->userType_id == 1) {
-                        $request->session()->put('LoggedUser', $userInfo->user_id); //for admin
-                        return redirect('admin/index');
-                    }elseif ($userInfo->userType_id == 3) {
-                        $request->session()->put('LoggedUser', $userInfo->user_id); // for customer
-                        return redirect('customer/custProfile');
-                    }
-                    elseif($userInfo->userType_id == 2){
-                        $request->session()->put('LoggedUser', $userInfo->user_id); // for veterinary
-                        return redirect('veterinary/vethome');
-                    }
-                }else{
-                    alert()->error('Incorrect Password','Login Fail');
-                    return back();
-                }
+            alert()->error('Incorrect Username/Password','Fail');
+            return redirect()->route('user.login');
         }
     }
 }

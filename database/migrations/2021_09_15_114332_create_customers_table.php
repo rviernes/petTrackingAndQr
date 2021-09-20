@@ -27,7 +27,7 @@ class CreateCustomersTable extends Migration
             $table->string('customer_street')->nullable();
             $table->string('customer_subdivision')->nullable();
             $table->string('customer_city');
-            $table->integer('user_id');
+            $table->integer('id');
             $table->tinyInteger('customer_isActive')->default(1);
             $table->timestamps();
         });

@@ -1,0 +1,121 @@
+/* width="300px" height="300px" style="object-fit: cover; border-radius: 50%;" */
+#petSearch {
+    border: solid 1px #CCC;
+    vertical-align: bottom;
+    height: auto;
+    text-align: center;
+    display: inline-block;
+  }
+  #searchIcon{
+    border: solid 1px #CCC;
+  }
+  #pet_name_id{
+    margin-top: 0.5%;
+    font-size: 300%;
+    text-align:left;
+  }
+  #petTypeSearch {
+    border: solid 1px #CCC;
+    vertical-align: bottom;
+    height: auto;
+    text-align: center;
+    display: inline-block;
+  }
+  td,tr {
+    text-align: center;
+  }
+  #breedSearch {
+    border: solid 1px #CCC;
+    vertical-align: bottom;
+    height: auto;
+    text-align: center;
+    display: inline-block;
+  }
+  #custsearch {
+    border: solid 1px #CCC;
+    vertical-align: bottom;
+    height: auto;
+    text-align: center;
+    display: inline-block;
+  }
+  #clinicSearch {
+    border: solid 1px #CCC;
+    vertical-align: bottom;
+    height: auto;
+    text-align: center;
+    display: inline-block;
+  }
+  #userSearch {
+    border: solid 1px #CCC;
+    vertical-align: bottom;
+    height: auto;
+    text-align: center;
+    display: inline-block;
+  }
+  #vetSearch {
+    border: solid 1px #CCC;
+    vertical-align: bottom;
+    height: auto;
+    text-align: center;
+    display: inline-block;
+  }
+  .nav li {
+    border-bottom: 3px solid rgba(0, 0, 0, 0);
+  }
+  .nav li:hover {
+    border-bottom: 3px solid #eee;
+  }
+  .nav li.active {
+    border-bottom: 3px solid #338ecf;
+    background: #eee
+  }
+  .card {
+    width: auto; 
+    margin-left:20px; 
+    margin-right:20px; 
+    text-align: center; 
+    padding: 20px;
+  }
+  .modal-boy{
+    text-align: center;
+  }
+  .btnReturn{
+    text-align: left;
+  }
+  .header{
+    font-size: 300%;
+  }
+  #labelName{
+    margin-right: 150px;
+  }
+  #labelName2{
+    margin-right: 210px;
+  }
+  #petbreed{
+    width: 300px; 
+    margin: auto;
+  }
+  #idFormGroup{
+    margin: auto; 
+    text-align: center;
+  }
+  #returnName{
+    text-align: left;
+  }
+  .modalFD{
+    text-align: left;
+  }
+  #class {
+    width: auto; 
+    margin-left:20px; 
+    margin-right:20px; 
+    text-align: center; 
+    padding: 20px;
+  }
+  
+#loginLogo {
+    width: 240px;
+    height: 240px;
+    object-fit: cover; 
+    /* border-radius: 50%; */
+}

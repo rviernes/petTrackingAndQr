@@ -24,7 +24,7 @@
                 <div class="card card-outline card-primary">
                     <div class="card-header text-center">
                         <div class="avatar">
-                            <img src="{{asset('vendors/dist/img/copy.png') }}" id="loginLogo" alt="Avatar">
+                            <img src="{{asset('vendors/dist/img/copy2.png') }}" id="loginLogo" alt="Avatar">
                         </div>
                     </div>
                     <div class="card-body">
@@ -34,7 +34,7 @@
                        </div>
                        @endif 
                         <p class="login-box-msg">Sign in to start your session</p>
-                        <form action="{{ route('user.check') }}" method="post" autocomplete="off"> 
+                        <form action="{{ route('admin.check') }}" method="post" autocomplete="off"> 
                             @csrf
                             <div class="input-group mb-3">
                                 <input type="email" class="form-control" name="email" placeholder="Email" value="{{ old('user_email')}}">
@@ -63,7 +63,7 @@
                                 </div>
                                 <!-- /.col -->
                                 <div class="col-4">
-                                    <button type="submit" class="btn btn-primary btn-block btn-sm">Sign In</button>
+                                    <button type="submit" class="btn btn-primary btn-block">Sign In</button>
                                 </div>
                                 <!-- /.col --> 
                             </div>

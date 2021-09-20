@@ -1,10 +1,6 @@
-
-
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
-
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Registration</title>
@@ -29,19 +25,20 @@
            @endif 
             <div class="register-box">
                 <br>
-                <h3 style="margin: 5%" class="header">Register new account for customer</h3>
+                <h3 style="margin: 5%" class="header">Register a new account</h3>
                 <br>
             </div>
             <!-- Main content -->
-            <form class="cmxform" action="{{ route('user.validateregister') }}" method="POST" id="Register"> @csrf <table class="table table-striped table-hover">
-                @csrf
-                    <thead> <!-- This inserts into user_accounts table -->
+            <form class="cmxform" action="{{ route('user.validateregister') }}" method="POST" id="Register"> 
+                @csrf 
+                <table class="table table-striped table-hover">
+                    <thead>
                         <tr>
                             <input type="hidden" disabled style="width: 50px; border-color: white; background-color: white" class="form-control" name="userType_id" value="3">
                             <td>
                                 <div class="form-group" style="">
                                     <label for="user_name">Username</label>
-                                    <input type="text" style="width: 300px" class="form-control" id="user_name" name="user_name" placeholder="Enter username" value="{{ old('user_name') }}">
+                                    <input type="text" style="width: 300px" class="form-control" id="user_name" name="user_name" placeholder="Enter username">
                     
                                 </div>
                             </td>
@@ -55,7 +52,6 @@
                                 <div class="form-group">
                                     <label for="user_mobile">Account Mobile</label>
                                     <input type="text" style="width: 300px" value="{{ old('user_mobile')}}" class="form-control" id="user_mobile" name="user_mobile" aria-describedby="emailHelp" placeholder="Enter mobile">
-                                
                                 </div>
                             </td>
                             <td>
@@ -67,7 +63,7 @@
                             </td>
                           
                         </tr>
-                        <tr>  <!-- This inserts into customers table -->
+                        <tr>
                             <td >
                                 <div class="form-group">
                                     <label for="customer_fname">First Name</label>
@@ -217,7 +213,6 @@
     <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.js"></script>
     
     
-    <script src="{{ asset('js/app.js') }}"></script>
     <script >
     
     $().ready(function() {
@@ -359,6 +354,4 @@
     </style>
     
     </body>
-
-    @include('sweet::alert')
 </html>

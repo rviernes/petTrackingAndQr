@@ -28,6 +28,8 @@ class CreateVeterinariesTable extends Migration
             $table->string('vet_barangay')->nullable();
             $table->string('vet_city');
             $table->integer('vet_zip');
+            $table->integer('id');
+            $table->integer('clinic_id');
             $table->date('vet_dateAdded');
             $table->timestamps();
         });
