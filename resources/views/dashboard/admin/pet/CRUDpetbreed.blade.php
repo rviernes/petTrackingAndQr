@@ -17,7 +17,7 @@
           <input type="search" class="form-control rounded" placeholder="Search by Breed" name="breedSearch" id="breedSearch" style="width: 200px;"/> 
           <button type="submit" class="btn btn-outline-primary"><i class="fas fa-search"></i></button>
           
-          <a class="btn btn-success" title="Add Pet Breed" style="margin-left: 10px" href="/admin/pets/CRUDaddbreed">
+          <a class="btn btn-success" title="Add Pet Breed" style="margin-left: 10px" href="/admin/pet/CRUDpetbreed/Add">
           <i class="fas fa-dna"></i> Add Pet Breed</a>
         </div>
     </form>
@@ -35,7 +35,7 @@
           <td> {{ $petbreed->breed_name}} </td>
 
           <td>
-              <a href="/admin/pets/CRUDeditbreed/{{$petbreed->breed_id}}" title="Edit Breed Name" class="btn btn-info">
+              <a href="/admin/pet/CRUDpetbreed/Edit/{{$petbreed->breed_id}}" title="Edit Breed Name" class="btn btn-info">
                 <i class="fas fa-pencil-alt"></i></a>
               <button class="btn btn-danger" title="Delete Breed Name" data-toggle="modal" data-target="#deleteModal{{ $petbreed->breed_id }}">
                 <i class="fas fa-trash"></i></button>
@@ -52,7 +52,7 @@
                       <span aria-hidden="true">&times;</span>
                     </button>
                   </div>
-                  <form action="/admin/pets/delete-breed/{{ $petbreed->breed_id }}" method="GET">
+                  <form action="/admin/pet/CRUDpetbreed/Delete/{{ $petbreed->breed_id }}" method="GET">
                     {{ csrf_field() }}
                     <div class="modal-body">
                       <h3>Confirm deletion of Breed Name, {{ $petbreed->breed_name }}?</h3>

@@ -17,7 +17,7 @@
         </a>
         
       <h3 class="header" style="font-size: 300%; ">Create Pet Type</h3>
-    <form action="{{ route('admin.addtype') }}" method="post">
+    <form action="{{ route('admin.addpettype') }}" method="post">
   @csrf
     <table class="table table-striped table-hover">
   <thead>

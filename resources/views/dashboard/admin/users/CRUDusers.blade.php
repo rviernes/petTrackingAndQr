@@ -37,8 +37,13 @@
         <tr>
           <td>{{ $userAccounts->username }}</td>
           <td>{{ $userAccounts->email }}</td>
-          <td>{{ $userAccounts->userType_name }}</td>
-
+          @if($userAccounts->userType_id == 1)
+            <td>Admin</td>
+          @elseif($userAccounts->userType_id == 2)
+            <td>Veterinary</td>
+          @else
+            <td>Customer</td>
+          @endif
           <td class="project-actions">
             <a class="btn btn-primary editbt" data-toggle="modal" data-target="#viewModal{{$userAccounts->id}}">
               <i class="fas fa-folder"></i>
@@ -110,7 +115,6 @@
     </table>
   </div>
   <br>
-  <div style="margin-left: 10px;">{{ $userTypes_name->links('pagination::bootstrap-4') }}</div>
 </div>
 </div>
 

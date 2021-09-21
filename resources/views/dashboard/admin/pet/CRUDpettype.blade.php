@@ -36,16 +36,16 @@
           <tr>
             <td>{{ $pettype->type_name }}</td>
             <td>
-              <a href="/admin/pets/CRUDedittype/{{$pettype->type_id}}" title="Edit Pet Type" class="btn btn-info">
+              <a href="/admin/pet/CRUDpettype/Edit/{{ $pettype->id }}" title="Edit Pet Type" class="btn btn-info">
                 <i class="fas fa-pencil-alt"></i> </a>
-              <button class="btn btn-danger " title="Delete Pet Type" data-toggle="modal" data-target="#deleteModal{{ $pettype->type_id }}">
+              <button class="btn btn-danger " title="Delete Pet Type" data-toggle="modal" data-target="#deleteModal{{ $pettype->id }}">
                 <i class="fas fa-trash"></i></button>
               </td>
             </tr>
 
 
 <!---------------------------- delete modal -------------------------------->
-<div class="modal fade" id="deleteModal{{$pettype->type_id}}" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal fade" id="deleteModal{{$pettype->id}}" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -54,7 +54,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="/admin/pets/delete/{{ $pettype->type_id }}" method="GET">
+            <form action="/admin/pet/CRUDpettype/Delete/{{ $pettype->id }}" method="GET">
                 @csrf
                 <div class="modal-body">
                     <h3>Confirm deletion of Type, {{$pettype->type_name}}?</h3>

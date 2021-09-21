@@ -18,7 +18,7 @@
           <div class="float-right">
             <input type="search" class="form-control rounded" placeholder="Search by Name" name="clinicSearch" id="clinicSearch" style="width: 200px;" />
             <button type="submit" class="btn btn-outline-primary" title="Searcha"><i class="fas fa-search"></i></button>
-            <a class="btn btn-success" style="margin-left: 10px" href="/admin/clinic/registerClinic" title="Create Clinic"><i class="fas fa-clinic-medical" ></i> Create</a>
+            <a class="btn btn-success" style="margin-left: 10px" href="/admin/CRUDclinic/register" title="Create Clinic"><i class="fas fa-clinic-medical" ></i> Create</a>
     </div>
           
       </form>
@@ -67,7 +67,7 @@
                   <i class="fas fa-trash"></i>
                   </a>
 
-                  <a class="btn btn-success btn-sm" href="/admin/vet/registerVet/{{ $cAccounts->clinic_id }}"><i class="fas fa-user-md"></i> 
+                  <a class="btn btn-success btn-sm" href="/admin/CRUDclinic/regVet/{{ $cAccounts->clinic_id }}"><i class="fas fa-user-md"></i> 
             </a>
           </td> 
 <!-- DELETE MODAL -->

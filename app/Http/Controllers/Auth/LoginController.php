@@ -33,7 +33,9 @@ class LoginController extends Controller
     protected function redirectTo(){
         if (auth()->user()->userType === 1) {
             return 'dashboard.admin.home';
-        } else {
+        } elseif (auth()->user()->userType === 2) {
+            return 'dashboard.vet.home';
+        }else{
             return 'home';
         }
         

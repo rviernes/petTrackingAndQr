@@ -38,21 +38,21 @@
       <tbody> 
         @foreach ($customers as $customer) 
         <tr>
-          <td>{{ $customer->customer_name}}</td>
+          <td>{{ $customer->customer_fname }} {{ $customer->customer_lname }}</td>
           <td>{{ $customer->customer_mobile}}</td>
           <td>{{ $customer->customer_tel}}</td>
           <td>{{ $customer->customer_gender}}</td>
           <td>{{ $customer->customer_birthday}}</td>
-          <td>{{ $customer->customer_address}}</td>
+          <td>{{ $customer->customer_blk }} / {{ $customer->customer_street }} / {{ $customer->customer_subdivision }} / {{ $customer->customer_barangay }} / {{ $customer->customer_city }} / {{ $customer->customer_zip }} </td>
           @if ($customer->customer_isActive == 1) <td>
             <span class="badge badge-success">Yes</span>
           </td> @else <td>
             <span class="badge badge-danger">No</span>
           </td> @endif <td>
-            <a href="/admin/customer/viewPatient/{{ $customer->customer_id}}" class="btn btn-primary btn-sm">
+            <a href="/admin/CRUDcustomers/{{ $customer->customer_id}}" class="btn btn-primary btn-sm">
               <i class="fas fa-folder"></i>
             </a>
-            <a href="/admin/customer/customerEdit/{{ $customer->customer_id }}" class="btn btn-info btn-sm">
+            <a href="/admin/CRUDcustomers/Edit/{{ $customer->customer_id }}" class="btn btn-info btn-sm">
               <i class="fas fa-pencil-alt"></i>
             </a>
             <button class="btn btn-danger btn-sm" id="delete" data-toggle="modal" data-target="#deleteModal{{ $customer->customer_id }}">
@@ -71,10 +71,10 @@
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
-              <form action=" /admin/customer/delete/{{$customer->customer_id}} " method="GET">
-                {{ csrf_field() }}
+              <form action="/admin/CRUDcustomers/delete/{{$customer->customer_id}}/Delete" method="GET">
+                @csrf
                 <div class="modal-body">
-                  <h3>Confirm deletion of user?</h3>
+                  <h3>Confirm deletion of user: {{ $customer->customer_fname }} {{ $customer->customer_lname }}?</h3>
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button>
